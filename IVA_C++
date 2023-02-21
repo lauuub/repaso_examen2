@@ -1,0 +1,20 @@
+/*Muestra un programa que lea de la entrada estandar el precio de un producto y muestre en la salida 
+estandar el precio del producto al aplicarle el IVA*/
+
+#include<iostream>
+
+using namespace std;
+
+int main(){
+    float precio, IVA, compra
+    int multiplicacion, division;
+
+    cout<<"Dime el precio: ";cin>>precio;
+    cout<<"Aplica el IVA: "; cin>>IVA;
+
+    compra=precio+(precio*IVA)/100;
+
+    cout<<"\nEl precio total es: "<<compra<<endl;
+
+    return 0;
+}

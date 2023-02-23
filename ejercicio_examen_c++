@@ -1,0 +1,72 @@
+/*
+
+1. Escriba un código en C que lea cuatro palabras y las muestre por pantalla
+recuperándolas de la memoria:
+2. Utilice para almacenarlas un vector declarado como char *palabras[4]
+3. Añada una función que reciba la dirección donde se almacena una de las palabras
+y devuelva el número de letras.
+4. Que el usuario pregunte por la letra que ocupa una determinada posición. Por
+pantalla se vería algo así:
+
+	>Diga el número de la palabra
+	>2
+	>casa
+	>Diga el número de la letra que desea recuperar
+	>3
+	>letra: s
+	
+*/
+
+#include<iostream>
+#include<stdio.h>
+#include<stdlib.h>
+
+using namespace std;
+int cuenta_letras(char *p_nombre){
+    int cont=0;
+    while(*(p_nombre+cont)!='\0'){
+        cont++;    
+    }
+    return cont;
+   
+}
+
+int main(){
+    char *palabras[4];
+    char nombre[10];
+    int longitud;
+    int cont,cont1;
+    for(cont=0;cont<4;cont++){
+        //Pedimos las palabras
+        cout<<"\nDime la palabra"<<cont<<": ";
+        cin>>nombre;
+        printf("\nHas introducido %s",nombre);
+        //Verificamos que lo hemos leido bien mostrandolo
+        //por pantalla
+        cout<<"\nHas introducido el nombre de "<<nombre;
+        //Contamos cuantas letras tiene el nombre
+        longitud=cuenta_letras(nombre);    
+        //Lo deletreamos en vertical
+        //for(cont=0;cont<longitud;cont++){
+        //    printf("\n%c",*(nombre+cont));
+        //}
+        //reservamos memoria para el nombre
+        palabras[cont]=(char *) malloc((longitud+2)*sizeof(char));
+        printf("\nLongitud= %d",longitud);
+        //Trasladamos la palabra letra a letra
+        for(cont1=0;cont1<=longitud;cont1++){
+            *(*(palabras+cont)+cont1)=nombre[cont1];
+            printf("\nTrasladada la letra %c",*(*(palabras+cont)+cont1));
+        }
+    }
+    //Comprobación
+    cout<<endl;
+    cout<<"***********************************"<<endl;
+    cout<<"*          LAS PALABRAS           *"<<endl;
+    cout<<"***********************************"<<endl;
+    for(cont=0;cont<4;cont++){
+        printf("%s\n",palabras[cont]);    
+    }
+
+    return 0;
+}
